@@ -1,0 +1,31 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="mentor-dashboard.html">Dashboard</a>
+        <a href="messages.html">Messages</a>
+        <a href="index.html">Logout</a>
+    </nav>
+    <h1>Messages</h1>
+    <div id="loadingIndicator" style="display: none;">Loading...</div>
+    <div id="messagesContainer">
+        <div id="messagesList"></div>
+        <div id="messageInputArea">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initMessaging();
+        });
+    </script>
+</body>
+</html>

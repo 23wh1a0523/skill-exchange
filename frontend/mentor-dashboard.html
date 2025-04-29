@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="mentor-dashboard.html" class="active">Dashboard</a>
+        <!-- <a href="messages.html">Messages</a> -->
+        <a href="index.html">Logout</a>
+    </nav>
+    
+    <div class="dashboard-container">
+        <h1>Mentor Dashboard</h1>
+        <div id="loadingIndicator" class="loading-indicator">Loading...</div>
+
+        <!-- Profile Section (Left-aligned) -->
+        <section class="dashboard-section left-align" id="mentorProfileSection">
+            <h2>Your Profile</h2>
+            <div class="profile-content">
+                <div id="currentSkills" class="skills-display"></div>
+                <form id="mentorProfileForm" class="profile-form">
+                    <div class="form-group">
+                        <label for="mentorSkills">Skills & Expertise:</label>
+                        <textarea id="mentorSkills" required class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Pending Connections Section (Right-aligned) -->
+        <section class="dashboard-section right-align" id="pendingConnectionsSection">
+            <h2>Pending Connection Requests</h2>
+            <div id="pendingConnectionsList" class="connections-grid pending"></div>
+        </section>
+
+        <!-- Accepted Connections Section (Full-width) -->
+        <section class="dashboard-section full-width" id="acceptedConnectionsSection">
+            <h2>Your Current Mentees</h2>
+            <div id="acceptedConnectionsList" class="connections-grid accepted"></div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+//connections.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connections</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Connections</h1>
+    <div id="connectionsList">
+        </div>
+    <div id="loadingIndicator" style="display: none;">Loading...</div>
+    <a href="index.html">Logout</a>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadConnections();
+        });
+
+        async function loadConnections() {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                alert('User not logged in.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            showLoading();
+            try {
+                const connections = await getConnections(userId);
+                displayConnections(connections);
+            } catch (error) {
+                handleApiError(error);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function displayConnections(connections) {
+            const connectionsList = document.getElementById('connectionsList');
+            if (connections.length === 0) {
+                connectionsList.innerHTML = '<p>No connections found.</p>';
+                return;
+            }
+
+            connectionsList.innerHTML = connections.map(conn => {
+                let otherUserId = conn.mentor_id === parseInt(localStorage.getItem('userId')) ? conn.mentee_id : conn.mentor_id;
+                let status = conn.status;
+                let zoomLink = conn.zoom_link ? `<p>Zoom Link: <a href="${conn.zoom_link}" target="_blank">Join Meeting</a></p>` : '';
+
+                return `
+                    <div class="connection-item">
+                        <p>Connection ID: ${conn.id}</p>
+                        <p>Other User ID: ${otherUserId}</p>
+                        <p>Status: ${status}</p>
+                        ${zoomLink}
+                        <a href="messages.html?recipient=${otherUserId}">Message</a>
+                    </div>
+                `;
+            }).join('');
+        }
+    </script>
+</body>
+</html>

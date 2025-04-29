@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentee Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="mentee-dashboard.html" class="active">Dashboard</a>
+        <!-- <a href="messages.html">Messages</a> -->
+        <a href="index.html">Logout</a>
+    </nav>
+    
+    <div class="dashboard-container">
+        <h1>Mentee Dashboard</h1>
+        <div id="loadingIndicator" class="loading-indicator">Loading...</div>
+
+        <!-- Profile Section (Left-aligned) -->
+        <section class="dashboard-section left-align" id="menteeProfileSection">
+            <h2>Your Profile</h2>
+            <div class="profile-content">
+                <div id="currentGoals" class="goals-display"></div>
+                <form id="menteeProfileForm" class="profile-form">
+                    <div class="form-group">
+                        <label for="menteeGoals">Goals:</label>
+                        <textarea id="menteeGoals" required class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Available Mentors Section (Right-aligned) -->
+        <section class="dashboard-section right-align" id="availableMentorsSection">
+            <h2>Available Mentors</h2>
+            <div id="availableMentorsList" class="mentor-grid"></div>
+        </section>
+
+        <!-- Accepted Connections Section (Full-width) -->
+        <section class="dashboard-section full-width" id="acceptedConnectionsSection">
+            <h2>Your Connections</h2>
+            <div id="acceptedConnectionsList" class="connections-grid"></div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
